@@ -14,3 +14,9 @@ npm i
 npm run dev
 ```
 
+## Dependencias
+Este proyecto usa
+- [Vite](https://vitejs.dev/)
+- [Tailwind](https://tailwindcss.com/docs/installation)
+- [RadixUI](https://www.radix-vue.com/components/)
+
