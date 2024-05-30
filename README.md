@@ -5,6 +5,7 @@
 - Benjamin Gonzalez
 - Alejandro Plaza
 - Juan Pablo Vergara Lobos
+
 =======
 
 ## Para correr el proyecto:
