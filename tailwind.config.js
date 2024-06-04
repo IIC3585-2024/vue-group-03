@@ -8,6 +8,9 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'card-bg': "url('@/assets/card-bg.svg')",
+      },
       colors: {
         ...blackA,
         ...green,

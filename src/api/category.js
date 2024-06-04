@@ -1,0 +1,1 @@
+export const categories = ['hunting', 'fishing', 'conservation', 'guns', 'gear', 'survival']

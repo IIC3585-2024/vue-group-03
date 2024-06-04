@@ -1,5 +1,5 @@
 <template>
-    <div class="border-t border-gray-300 w-full mb-6"></div>
+    <div class="border-t border-gray-700 w-full mt-6 mb-6"></div>
 </template>
 
 <script>
