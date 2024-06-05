@@ -20,6 +20,12 @@ const routes = [
     component: () => import('../views/ArticleView.vue'),
     props: true,
   },
+  {
+    path: '/search/:searchQuery',
+    name: 'Search',
+    component: () => import('../views/SearchView.vue'),
+    props: true,
+  },
 ];
 
 
