@@ -21,7 +21,7 @@ export default {
       type: String,
       default: 'OutdoorLife'
     },
-    options: {
+    news: {
       type: Array,
       default: () => []
     },
@@ -56,18 +56,18 @@ export default {
       >
       <div class="flex justify-around gap-4">
         <v-icon class="text-slate-900 w-1/2 h-full" :name="icon" />
+        {{ option }}
           <ul class="grid grid-cols-2 gap-10 text-slate-900">
-            <li v-for="option in options" :key="option.id">
-              <RouterLink :to="option.path">
+            <li v-for="(option, index) in news" :key="index">
+              <RouterLink :to="option.title">
                 <div class="flex flex-col items-center">
-                  <span class="font-bold text-md">{{ option.title }}</span>
-                  <span class="text-xs" > {{ option.shortTitle }} </span>
+                  <span class="font-bold text-md">{{ option }}</span>
+                  <span class="text-xs" > {{ option.title }} xd</span>
                 </div>
               </RouterLink>
             </li>
           </ul>
       </div>
-
         <HoverCardArrow class="fill-white" :width="8" />
       </HoverCardContent>
     </HoverCardPortal>

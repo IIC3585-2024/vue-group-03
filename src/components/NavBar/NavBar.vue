@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="mt-10 sm:grid sm:grid-cols-2 gap-2 lg:flex lg:flex-wrap sm:gap-4">
-            <NavBarContextMenuItem v-for="option in menuContextOptions" :key="option.id" :icon="option.icon" :title="option.title" :options="option.options" :path="`/category${option.path}`"/>
+            <NavBarContextMenuItem v-for="(option, index) in menuContextData" :key="index" :icon="option.icon" :title="option.title" :news="news[options.title]" :path="`/category${option.path}`"/>
         </div>
     </nav>
 </template>
@@ -22,7 +22,11 @@ import NavBarItemVue from './NavBarItem.vue'
 import NavBarItemSearch from './NavBarItemSearch.vue';
 import NavBarItemTitle from './NavBarItemTitle.vue';
 import NavBarContextMenuItem from './NavBarContextMenuItem.vue';
-import menuContextOptions from '@/docs/NavBar/MenuContextOptions.js'
+import menuContextData from '@/docs/NavBar/MenuContextData'
+import { onMounted, ref } from 'vue'
+import { useNewsStore } from '@/stores/news'
+import { getRandomSubset } from '@/utils/getRandomSubset'
+
 
 
 export default {
@@ -39,10 +43,43 @@ export default {
             default: 'home'
         }
     },
-    data() {
+    setup() {
+        const newsStore = useNewsStore()
+
+        const newsForHunting = ref([])
+        const newsForFishing = ref([])
+        const newsForConservation = ref([])
+        const newsForGuns = ref([])
+        const newsForGear = ref([])
+        const newsForSurvival = ref([])
+        const amountOfNews = 3
+        const news = {
+            Hunting: newsForHunting,
+            Fishing: newsForFishing,
+            Conservation: newsForConservation,
+            Guns: newsForGuns,
+            Gear: newsForGear,
+            Survival: newsForSurvival
+        }
+
+        async function loadNewsForCategory(category, count) {
+            await newsStore.loadNews(category)
+            return getRandomSubset(newsStore.newsByCategory[category], count)
+        }
+
+        onMounted(async () => {
+            newsForHunting.value = await loadNewsForCategory('hunting', amountOfNews)
+            newsForFishing.value = await loadNewsForCategory('fishing', amountOfNews)
+            newsForConservation.value = await loadNewsForCategory('conservation', amountOfNews)
+            newsForGuns.value = await loadNewsForCategory('guns', amountOfNews)
+            newsForGear.value = await loadNewsForCategory('gear', amountOfNews)
+            newsForSurvival.value = await loadNewsForCategory('survival', amountOfNews)
+            console.log(news.hunting.value)
+        })
         return {
-            menuContextOptions
-        };
+            news,
+            menuContextData
+        }
     }
 }
 </script>
