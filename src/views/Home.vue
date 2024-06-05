@@ -1,10 +1,13 @@
 <template>
     <div>
-        <FirstLandingContainer :news="newsForFirstContainer" />
+        <FirstLandingContainer :news="newsForFirstContainer" :category="randomCategories[0]" />
         <SeparatingLine />
-        <SecondLandingContainer :news="newsForSecondContainer" />
+        <SecondLandingContainer :news="newsForSecondContainer" :category="randomCategories[1]" />
         <SeparatingLine />
-        <ThirdLandingContainerVue :news="newsForThirdContainer" />
+        <FirstLandingContainer :news="newsForThirdContainer" :category="randomCategories[2]" />
+        <SeparatingLine />
+        <SecondLandingContainer :news="newsForFourthContainer" :category="randomCategories[3]" />
+        <SeparatingLine />
     </div>
 </template>
 
@@ -15,7 +18,6 @@ import { categories } from '@/api/category'
 import { getRandomSubset } from '@/utils/getRandomSubset'
 import FirstLandingContainer from '@/components/Containers/FirstLandingContainer.vue'
 import SecondLandingContainer from '@/components/Containers/SecondLandingContainer.vue';
-import ThirdLandingContainerVue from '@/components/Containers/ThirdLandingContainer.vue';
 import SeparatingLine from '@/components/Misc/Separator.vue'
 
 export default {
@@ -23,7 +25,6 @@ export default {
     components: {
         FirstLandingContainer,
         SecondLandingContainer,
-        ThirdLandingContainerVue,
         SeparatingLine,
     },
     setup() {
@@ -32,6 +33,7 @@ export default {
         const newsForFirstContainer = ref([])
         const newsForSecondContainer = ref([])
         const newsForThirdContainer = ref([])
+        const newsForFourthContainer = ref([])
 
         async function loadNewsForCategory(category, count) {
             await newsStore.loadNews(category)
@@ -43,11 +45,14 @@ export default {
             newsForFirstContainer.value = await loadNewsForCategory(randomCategories.value[0], 5)
             newsForSecondContainer.value = await loadNewsForCategory(randomCategories.value[1], 3)
             newsForThirdContainer.value = await loadNewsForCategory(randomCategories.value[2], 5)
+            newsForFourthContainer.value = await loadNewsForCategory(randomCategories.value[3], 3)
         })
         return {
             newsForFirstContainer,
             newsForSecondContainer,
             newsForThirdContainer,
+            newsForFourthContainer,
+            randomCategories,
         }
     },
 

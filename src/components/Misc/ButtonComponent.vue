@@ -3,7 +3,6 @@
         Read more
         <v-icon name="fc-reading"/>
     </button>
-
 </template>
 
 <script>

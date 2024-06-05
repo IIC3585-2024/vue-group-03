@@ -1,11 +1,14 @@
 <template>
-    <main class="m-auto my-10 max-w-6xl space-y-10 px-3">
+    <div class="flex flex-col min-h-screen">
+      <main class="flex-grow m-auto mt-5 max-w-6xl px-3">
         <slot></slot>
-    </main>
-</template>
-
-<script>
-export default {
+      </main>
+    </div>
+  </template>
+  
+  <script>
+  export default {
     name: 'MainContainer'
-}
-</script>
+  }
+  </script>
+  

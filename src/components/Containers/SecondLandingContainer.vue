@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-6 grid-rows-4 gap-4">
-        <LandingCard v-for="(new_, index) in news" :key="index" :title="new_.title" :author="new_.author" :image="new_.urlToImage" :path="new_.title" />
+        <LandingCard v-for="(new_, index) in news" :key="index" :title="new_.title" :author="new_.author" :image="new_.urlToImage" :path="`/${category}/${new_.title}`" />
     </div>
 </template>
 
@@ -16,7 +16,11 @@ export default {
         news: {
             type: Array,
             required: true
-        }
+        },
+        category: {
+            type: String,
+            required: true
+        },
     },
 }
 

@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="mt-10 sm:grid sm:grid-cols-2 gap-2 lg:flex lg:flex-wrap sm:gap-4">
-            <NavBarContextMenuItem v-for="option in menuContextOptions" :key="option.id" :icon="option.icon" :title="option.title" :options="option.options" :path="option.path" />
+            <NavBarContextMenuItem v-for="option in menuContextOptions" :key="option.id" :icon="option.icon" :title="option.title" :options="option.options" :path="`/category${option.path}`"/>
         </div>
     </nav>
 </template>

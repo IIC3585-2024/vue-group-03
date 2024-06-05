@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-between col-span-2 row-span-4 max-w-sm bg-white border border-gray-100 rounded-lg shadow-2xl dark:bg-card-bg dark:border-slate-950 p-5 ">
-        <img class="w-full h-full object-cover rounded-lg" :src="image" alt="" />
+        <img class="w-full h-full object-cover rounded-lg" :src="image || 'https://via.assets.so/img.jpg?w=400&h=150&tc=white&bg=black&t='" alt="Image not available" />
 
         <div class="flex flex-col justify-start p-5">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ title }}</h5>
